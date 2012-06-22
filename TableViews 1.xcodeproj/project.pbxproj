@@ -15,6 +15,7 @@
 		F726456015936697008514E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F726455F15936697008514E8 /* AppDelegate.m */; };
 		F726456315936697008514E8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F726456115936697008514E8 /* MainStoryboard.storyboard */; };
 		F726456615936697008514E8 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F726456515936697008514E8 /* MyViewController.m */; };
+		F777036A1594F322002AC41D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F77703691594F322002AC41D /* README.md */; };
 		F799B6391594C849008C3728 /* NewTreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F799B6381594C849008C3728 /* NewTreeViewController.m */; };
 		F7A62B141594BAD300B873C1 /* TreeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A62B131594BAD300B873C1 /* TreeContainer.m */; };
 		F7A62B181594BAFD00B873C1 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A62B171594BAFD00B873C1 /* Tree.m */; };
@@ -34,6 +35,7 @@
 		F726456215936697008514E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F726456415936697008514E8 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		F726456515936697008514E8 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		F77703691594F322002AC41D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		F799B6371594C849008C3728 /* NewTreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTreeViewController.h; sourceTree = "<group>"; };
 		F799B6381594C849008C3728 /* NewTreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTreeViewController.m; sourceTree = "<group>"; };
 		F7A62B121594BAD300B873C1 /* TreeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeContainer.h; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				F726456D15936A03008514E8 /* Controllers */,
 				F726456E15936EF6008514E8 /* Models */,
 				F726455615936697008514E8 /* Supporting Files */,
+				F77703691594F322002AC41D /* README.md */,
 			);
 			path = "TableViews 1";
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				F726455A15936697008514E8 /* InfoPlist.strings in Resources */,
 				F726456315936697008514E8 /* MainStoryboard.storyboard in Resources */,
+				F777036A1594F322002AC41D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
