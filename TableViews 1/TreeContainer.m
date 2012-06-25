@@ -25,6 +25,10 @@
     return _treeDictonary;
 }
 
+-(NSInteger)numberOfTreeTypes{
+    return [[self.treeDictonary allKeys] count];
+}
+
 - (NSInteger)numberOfTreesWithType:(NSString *)type{
     return [[self.treeDictonary objectForKey:type] count];
 }

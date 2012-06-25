@@ -11,6 +11,7 @@
 
 @interface TreeContainer : NSObject
 
+-(NSInteger)numberOfTreeTypes;
 -(NSInteger)numberOfTreesWithType:(NSString *)type;
 -(NSInteger)numberOfTreesInSection:(NSInteger)section;
 
