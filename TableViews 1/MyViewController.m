@@ -53,10 +53,7 @@
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger count = [self.myTrees numberOfTreesInSection:section];
-    if (tableView.editing && section == [self.myTrees numberOfTreeTypes]-1) {
-        return count+1;
-    }   
+    NSInteger count = [self.myTrees numberOfTreesInSection:section];  
     return count;
 }
 
@@ -64,21 +61,8 @@
     return [[self.myTrees getTreeTypes] objectAtIndex:section];
 }
 
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.row == [self.myTrees numberOfTreesInSection:indexPath.section] &&
-        indexPath.section == [self.myTrees numberOfTreeTypes]-1) {
-		// This is the insertion cell.
-		static NSString *InsertionCellIdentifier = @"InsertionCell";
-		
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:InsertionCellIdentifier];
-		if (cell == nil) {		
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:InsertionCellIdentifier];
-			cell.textLabel.text = @"Add Tree";
-			cell.accessoryType = UITableViewCellAccessoryNone;
-		}
-		return cell;
-	}
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"treeCell"];
     if (!cell) {
@@ -95,38 +79,34 @@
 
 #pragma mark - UITableView Delegate Methods
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	// The add row gets an insertion marker, the others a delete marker.
-    if (indexPath.row == [self.myTrees numberOfTreesInSection:indexPath.section]) {
-        return UITableViewCellEditingStyleInsert;
-    }
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView 
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
     return UITableViewCellEditingStyleDelete;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     [self.tableView setEditing:editing animated:animated];
-    
-    NSInteger sec = [self.myTrees numberOfTreeTypes]-1;
-    NSInteger row = [self.myTrees numberOfTreesInSection:sec];
-    
-    
-    NSArray *path = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:sec]];
-    
-    if( editing ){
-        [self.tableView insertRowsAtIndexPaths:path
-                              withRowAnimation:UITableViewRowAnimationBottom];
-    }
-    else{
-        [self.tableView deleteRowsAtIndexPaths:path
-                              withRowAnimation:UITableViewRowAnimationBottom];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Tree *tree = [[self.myTrees getTreesInSection:indexPath.section] objectAtIndex:indexPath.row];
+        [self.myTrees removeTree:tree];
+        [tableView beginUpdates];
+        if ([self.myTrees numberOfTreesInSection:indexPath.section] == -1) {
+            NSLog(@"Remove Section");
+            [self.tableView deleteSections:[[NSIndexSet alloc] initWithIndex:indexPath.section] 
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            NSLog(@"Remove Row");
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+                                  withRowAnimation:UITableViewRowAnimationBottom];
+        }
+        [tableView endUpdates];
     }
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleInsert) {
-        [self performSegueWithIdentifier:@"pushNewTreeVC" sender:self];
-    }
-}
 @end

@@ -45,10 +45,13 @@
                             <outlet property="delegate" destination="lfq-9v-AY6" id="vRT-PH-yEK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YlL-HE-EUo"/>
-                    <connections>
-                        <segue destination="QdF-Cy-M3v" kind="push" identifier="pushNewTreeVC" id="NRD-Xw-TLS"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="YlL-HE-EUo">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="YfA-5V-Ig2">
+                            <connections>
+                                <segue destination="QdF-Cy-M3v" kind="push" identifier="pushNewTreeVC" id="k31-MT-rAp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CX8-F1-Z8E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -30,11 +30,20 @@
 }
 
 - (NSInteger)numberOfTreesWithType:(NSString *)type{
-    return [[self.treeDictonary objectForKey:type] count];
+    NSArray *trees = [self.treeDictonary objectForKey:type];
+    if (!trees) {
+        return -1;
+    } else {
+        return [trees count];
+    }
 }
 
 - (NSInteger)numberOfTreesInSection:(NSInteger)section{
-    return [self numberOfTreesWithType:[self.treeDictonary.allKeys objectAtIndex:section]];
+    NSArray *types = self.treeDictonary.allKeys;
+    if (section >= [types count])
+        return -1;
+    else
+    return [self numberOfTreesWithType:[types objectAtIndex:section]];
 }
 
 -(Tree *)getTreeWithName:(NSString *)name{
@@ -81,7 +90,11 @@
 -(void)removeTree:(Tree *)tree{
     NSMutableArray *newTreeList = [[self.treeDictonary objectForKey:tree.type] mutableCopy];
     [newTreeList removeObject:tree];
-    [self.treeDictonary setObject:[newTreeList copy] forKey:tree.type];
+    if ([newTreeList count] == 0) {
+        [self.treeDictonary removeObjectForKey:tree.type];
+    } else {
+        [self.treeDictonary setObject:[newTreeList copy] forKey:tree.type];
+    }
 }
 
 -(void)removeTreeWithName:(NSString *)treeName{
