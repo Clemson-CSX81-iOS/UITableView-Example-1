@@ -14,8 +14,9 @@
 @property (nonatomic, copy) NSString *type;
 
 
-- (id)init;
+//Designated Initalizer
 - (id)initWithName:(NSString *)treeName AndType:(NSString *)treeType;
+- (id)init;
 
 + (id)treeWithName:(NSString *)treeName AndType:(NSString *)treeType;
 
