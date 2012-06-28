@@ -11,6 +11,8 @@
 @protocol NewTreeDelegate <NSObject>
 
 @required
+/** Delegate method to add a new tree and dismiss the view.
+ */
 - (void) newTreeWithName:(NSString *)newName AndType:(NSString *)newType;
 
 @end

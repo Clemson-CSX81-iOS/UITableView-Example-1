@@ -10,9 +10,17 @@
 
 @implementation NewTreeViewController
 
+#pragma mark - Property Syntheses
 @synthesize delegate = _delegate;
 @synthesize treeName = _treeName;
 @synthesize treeType = _treeType;
+
+#pragma mark - Methods
+/** Method used when you press the add button to add a new tree.
+ */
+- (IBAction)addTree {
+    [self.delegate newTreeWithName:self.treeName.text AndType:self.treeType.text];
+}
 
 - (void)viewDidUnload
 {
@@ -25,9 +33,5 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (IBAction)addTree {
-    [self.delegate newTreeWithName:self.treeName.text AndType:self.treeType.text];
 }
 @end
