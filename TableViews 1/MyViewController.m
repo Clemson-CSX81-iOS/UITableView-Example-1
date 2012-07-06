@@ -8,21 +8,13 @@
 
 #import "MyViewController.h"
 
-@interface MyViewController ()
-
-@end
-
 @implementation MyViewController
 
+#pragma mark - Property Syntheses
 @synthesize myTrees = _myTrees;
 
-- (TreeContainer *)myTrees{
-    if (!_myTrees) {
-        _myTrees = [[TreeContainer alloc] init];
-    }
-    return _myTrees;
-}
-
+#pragma mark - Methods
+#pragma mark Property Getter
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.myTrees addTreeWithName:@"Red Apple Tree" AndType:@"Fruit"];
@@ -38,6 +30,15 @@
     if ([segue.identifier isEqualToString:@"pushNewTreeVC"]) {
         [segue.destinationViewController setDelegate:self];
     }
+}
+
+/** This allows for lazy instantiation of the property.
+ */
+- (TreeContainer *)myTrees{
+    if (!_myTrees) {
+        _myTrees = [[TreeContainer alloc] init];
+    }
+    return _myTrees;
 }
 
 - (void) newTreeWithName:(NSString *)newName AndType:(NSString *)newType{
