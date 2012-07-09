@@ -21,8 +21,8 @@
 
 @property (weak  , nonatomic) id<NewTreeDelegate> delegate;
 
-@property (strong, nonatomic) IBOutlet UITextField *treeName;
-@property (strong, nonatomic) IBOutlet UITextField *treeType;
+@property (weak, nonatomic) IBOutlet UITextField *treeName;
+@property (weak, nonatomic) IBOutlet UITextField *treeType;
 
 - (IBAction)addTree;
 @end
